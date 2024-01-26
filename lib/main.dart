@@ -101,6 +101,45 @@ class HomeActivity extends StatelessWidget {
         },
         backgroundColor: Colors.green,
       ),
+      drawer: Drawer(
+        child: ListView(
+          children: [
+             UserAccountsDrawerHeader(
+            decoration: const BoxDecoration(color: Colors.green),
+            accountName: const Text("Abdullah Al Mahmud"),
+            accountEmail: const Text("info@mahmud.com"),
+            currentAccountPicture: Image.network("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTql7QO1cKJ2vGPissyg8P5dvN0F0fmajfgtEoaIywuRg&s"),
+            onDetailsPressed: ()=> mySnackBar("This is Abdullah's Profile", context),
+            
+            ),
+            ListTile(
+              title: const Text("Home"),
+              leading: const Icon(Icons.home),
+              onTap: () => mySnackBar("Home", context),
+            ),
+            ListTile(
+              title: const Text("Contact"),
+              leading: const Icon(Icons.message),
+              onTap: () => mySnackBar("Home", context),
+            ),
+            ListTile(
+              title: const Text("Email"),
+              leading: const Icon(Icons.email),
+              onTap: () => mySnackBar("Home", context),
+            ),
+            ListTile(
+              title: const Text("Phone"),
+              leading: const Icon(Icons.phone),
+              onTap: () => mySnackBar("Home", context),
+            ),
+            ListTile(
+              title: const Text("Profile"),
+              leading: const Icon(Icons.person),
+              onTap: () => mySnackBar("Home", context),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
