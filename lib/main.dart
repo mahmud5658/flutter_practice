@@ -175,35 +175,75 @@ class HomeActivity extends StatelessWidget {
           ],
         ),
       ),
-      body: Center(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            TextButton(
-              onPressed: () {
-                mySnackBar("Text Button", context);
-              },
-              child: const Text(
-                "Text Button",
-                style: TextStyle(color: Colors.black),
+      body: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              TextButton(
+                onPressed: () {
+                  mySnackBar("Text Button", context);
+                },
+                child: const Text(
+                  "Text Button",
+                  style: TextStyle(color: Colors.black),
+                ),
               ),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                // mySnackBar("Elevated Button", context);
-                myAlertDialog(context);
-              },
-              style: buttonStyle,
-              child: const Text("Elevated Button"),
-            ),
-            OutlinedButton(
-              onPressed: () {
-                mySnackBar("outlined Button", context);
-              },
-              child: const Text("Outlined Button"),
-            ),
-          ],
-        ),
+              ElevatedButton(
+                onPressed: () {
+                  // mySnackBar("Elevated Button", context);
+                  myAlertDialog(context);
+                },
+                style: buttonStyle,
+                child: const Text("Elevated Button"),
+              ),
+              OutlinedButton(
+                onPressed: () {
+                  mySnackBar("outlined Button", context);
+                },
+                child: const Text("Outlined Button"),
+              ),
+            ],
+          ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              const Padding(
+                padding: EdgeInsets.all(10),
+                child: TextField(
+                  decoration: InputDecoration(
+                      border: OutlineInputBorder(), labelText: "First Name"),
+                ),
+              ),
+              const Padding(
+                padding: EdgeInsets.all(10),
+                child: TextField(
+                  decoration: InputDecoration(
+                      border: OutlineInputBorder(), labelText: "Last Name"),
+                ),
+              ),
+              const Padding(
+                padding: EdgeInsets.all(10),
+                child: TextField(
+                  decoration: InputDecoration(
+                      border: OutlineInputBorder(), labelText: "Email Address"),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(10),
+                child: ElevatedButton(
+                  onPressed: () {},
+                  style: ElevatedButton.styleFrom(
+                    minimumSize: const Size(double.infinity, 50),
+                    backgroundColor: Colors.blue,
+                    foregroundColor: Colors.white,
+                  ),
+                  child: const Text("Submit"),
+                ),
+              ),
+            ],
+          )
+        ],
       ),
     );
   }
