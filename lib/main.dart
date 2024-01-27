@@ -28,8 +28,42 @@ class HomeActivity extends StatelessWidget {
         .showSnackBar(SnackBar(content: Text(message)));
   }
 
+  myAlertDialog(context) {
+    return showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return Expanded(
+              child: AlertDialog(
+            title: const Text("Alert !"),
+            content: const Text("Do you want to delete"),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  mySnackBar("Yes button clicked", context);
+                  Navigator.of(context).pop();
+                },
+                child: const Text("Yes"),
+              ),
+              TextButton(
+                onPressed: () {
+                  mySnackBar("No button clicked", context);
+                  Navigator.of(context).pop();
+                },
+                child: const Text("No"),
+              ),
+            ],
+          ));
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
+    ButtonStyle buttonStyle = ElevatedButton.styleFrom(
+      padding: const EdgeInsets.all(12),
+      backgroundColor: Colors.blue,
+      foregroundColor: Colors.white,
+    );
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.green,
@@ -104,13 +138,14 @@ class HomeActivity extends StatelessWidget {
       drawer: Drawer(
         child: ListView(
           children: [
-             UserAccountsDrawerHeader(
-            decoration: const BoxDecoration(color: Colors.green),
-            accountName: const Text("Abdullah Al Mahmud"),
-            accountEmail: const Text("info@mahmud.com"),
-            currentAccountPicture: Image.network("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTql7QO1cKJ2vGPissyg8P5dvN0F0fmajfgtEoaIywuRg&s"),
-            onDetailsPressed: ()=> mySnackBar("This is Abdullah's Profile", context),
-            
+            UserAccountsDrawerHeader(
+              decoration: const BoxDecoration(color: Colors.green),
+              accountName: const Text("Abdullah Al Mahmud"),
+              accountEmail: const Text("info@mahmud.com"),
+              currentAccountPicture: Image.network(
+                  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTql7QO1cKJ2vGPissyg8P5dvN0F0fmajfgtEoaIywuRg&s"),
+              onDetailsPressed: () =>
+                  mySnackBar("This is Abdullah's Profile", context),
             ),
             ListTile(
               title: const Text("Home"),
@@ -136,6 +171,36 @@ class HomeActivity extends StatelessWidget {
               title: const Text("Profile"),
               leading: const Icon(Icons.person),
               onTap: () => mySnackBar("Home", context),
+            ),
+          ],
+        ),
+      ),
+      body: Center(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            TextButton(
+              onPressed: () {
+                mySnackBar("Text Button", context);
+              },
+              child: const Text(
+                "Text Button",
+                style: TextStyle(color: Colors.black),
+              ),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                // mySnackBar("Elevated Button", context);
+                myAlertDialog(context);
+              },
+              style: buttonStyle,
+              child: const Text("Elevated Button"),
+            ),
+            OutlinedButton(
+              onPressed: () {
+                mySnackBar("outlined Button", context);
+              },
+              child: const Text("Outlined Button"),
             ),
           ],
         ),
